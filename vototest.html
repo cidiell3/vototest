@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>pov: u have a gf in stem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #messaggio {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Per scoprire il voto dell'esame, dovrai risolvere la seguente funzione:</h2>
+  <h1>f(x) = 5x² + 3x + 2</h1>
+  <p>Il valore di x è nascosto.</p>
+
+  <input type="text" id="risposta" inputmode="numeric" pattern="[0-9]*" placeholder="Inserisci il risultato" />
+  <button id="verifica">Verifica</button>
+  <p id="messaggio"></p>
+
+  <script>
+    const x = 2;
+    const risultato = 5 * x * x + 3 * x + 2;
+
+    function controlla() {
+      const val = Number(document.getElementById("risposta").value.trim());
+      const messaggio = document.getElementById("messaggio");
+
+      if (isNaN(val)) {
+        messaggio.textContent = "⚠️ Per favore, inserisci un numero valido.";
+        return;
+      }
+
+      if (val < 1 || val > 30) {
+        messaggio.textContent = "⚠️ Inserisci un numero compreso tra 1 e 30.";
+        return;
+      }
+
+      if (val === risultato) {
+        messaggio.textContent = "✅ Bravo Stivi!!! (scommetto che hai tirato a caso)";
+      } else {
+        messaggio.textContent = "❌ Dai Stefano, so che la matematica non sia il tuo forte, ma sforzati di più!";
+      }
+    }
+
+    document.getElementById("verifica").addEventListener("click", controlla);
+  </script>
+</body>
+</html>
